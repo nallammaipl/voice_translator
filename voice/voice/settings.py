@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'voice_1',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# CORS (Cross-Origin Resource Sharing)
+# Lets you control which frontend origins (React, Angular, mobile apps, etc.) can call your backend
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React dev server
+]
+
+MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
+# React (frontend) calls Django (backend API)

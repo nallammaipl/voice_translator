@@ -1,9 +1,0 @@
-<h2>Transcription Result:</h2>
-<p>{{ transcription.transcribed_txt }}</p>
-{% if transcription.textfilestorage.text_file %}
-    <a href="{{ transcription.textfilestorage.text_file.url }}" download="transcription.txt">
-        <button>Download Transcribed Text</button>
-    </a>
-{% else %}
-    <p>No file available to download.</p>
-{% endif %}
